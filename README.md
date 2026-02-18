@@ -42,11 +42,12 @@ Malgré ces limitations, l'idée est de créer des projets riches en fonctionnal
 ```
 vibe-tracing/
 ├── README.md              # Ce fichier
+├── Specification.md       # Spécification technique du projet
 ├── docs/
 │   ├── MiniVibesConsigne.md
 │   └── minivibes.png
-├── COPILOT.md             # Prompts d'agent et journal d'interaction
-└── SESSION.md             # Résumé de session (généré en fin)
+├── COPILOT.md             # Instructions pour l'agent
+└── SESSION.md             # Journal de session
 ```
 
 ## Compétences
@@ -57,6 +58,16 @@ Ce projet démontre:
 - **pratiques de codage propre** - workflow Git approprié et organisation du code
 - **ingénierie de prompts** - une compétence technique pratique et émergente
 - **gestion du temps** - livrer un travail de qualité dans des délais stricts
+
+## Références sur le Ray Tracing
+
+Les concepts logiques et les algorithmes de ce projet sont basés sur les fondamentaux fournis par la série de livres "Ray Tracing in One Weekend".
+
+**Auteurs**: Peter Shirley, Trevor David Black, Steve Hollasch.
+
+**Titre de la série**: Ray Tracing in One Weekend Series (v4.0.2).
+
+**URL:** https://raytracing.github.io/
 
 ---
 
@@ -97,18 +108,19 @@ Despite these limitations, the idea is to create feature-rich, production-qualit
 - git-based version control with intelligent commits
 - transparent prompting (all prompts documented in `COPILOT.md`)
 - initial code generated entirely by AI agents
-- end-of-day `SESSION.md` submission
+- `SESSION.md` prompt record
 
 ## Project structure
 
 ```
 vibe-tracing/
 ├── README.md              # This file
+├── Specification.md       # Technical project specification
 ├── docs/
 │   ├── MiniVibesConsigne.md
 │   └── minivibes.png
-├── COPILOT.md             # Agent prompts and interaction log
-└── SESSION.md             # Session summary (generated at end)
+├── COPILOT.md             # Agent instructions
+└── SESSION.md             # Session log
 ```
 
 ## Skills
@@ -120,6 +132,17 @@ This project demonstrates:
 - **prompt engineering** - a practical, emerging technical skill
 - **time management** - delivering quality work within strict timeframes
 
+For complete details, see complete project brief (French & English) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)
+
+## Ray Tracing references
+
+The specification logic and algorithms in this project were based on the foundational concepts provided in the "Ray Tracing in One Weekend" book series.
+
+**Authors**: Peter Shirley, Trevor David Black, Steve Hollasch.
+
+**Series Title**: Ray Tracing in One Weekend Series (v4.0.2).
+
+**URL:** https://raytracing.github.io/
+
 ---
 
-For complete details, see complete project brief (French & English) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)
