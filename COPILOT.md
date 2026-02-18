@@ -93,7 +93,7 @@ Follow the Conventional Commits specification. After completing each step or fix
 
 <body>
 
-*commit co-authored-by Copilot as part of a a 'vibe-coding educational project*
+*commit co-authored-by Copilot as part of a a 'vibe-coding' educational project*
 ```
 
 **example:**
@@ -103,7 +103,7 @@ feat(materials): implement glass material with Schlick's approximation
 Add Dielectric material type with proper refraction using Snell's law
 and Schlick's fresnel approximation for reflectance.
 
-*commit co-authored-by Copilot as part of a a 'vibe-coding educational project*
+*commit co-authored-by Copilot as part of a a 'vibe-coding' educational project*
 ```
 
 ### Commit discipline
