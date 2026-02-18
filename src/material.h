@@ -5,6 +5,7 @@
 #include "vec3.h"
 
 /* Forward declaration */
+struct hit_record;
 typedef struct hit_record hit_record_t;
 
 /* Material scatter function pointer */
@@ -18,5 +19,14 @@ typedef struct material {
     scatter_fn scatter;
     void (*destroy)(void *mat);
 } material_t;
+
+/* Lambertian (diffuse) material creation */
+material_t lambertian_create(const vec3_t albedo);
+
+/* Metal (reflective) material creation */
+material_t metal_create(const vec3_t albedo, double fuzz);
+
+/* Dielectric (glass) material creation */
+material_t dielectric_create(double index_of_refraction);
 
 #endif /* MATERIAL_H */

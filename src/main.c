@@ -3,6 +3,8 @@
 #include "hittable.h"
 #include "sphere.h"
 #include "camera.h"
+#include "material.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +12,7 @@
 #define IMAGE_WIDTH 256
 #define IMAGE_HEIGHT 256
 #define SAMPLES_PER_PIXEL 100
+#define MAX_DEPTH 50
 
 /* Construct a ray from origin and direction */
 ray_t ray(const vec3_t origin, const vec3_t direction) {
@@ -21,13 +24,28 @@ vec3_t ray_at(const ray_t r, double t) {
     return vec3_add(r.origin, vec3_mul(r.direction, t));
 }
 
-/* Calculate color based on ray-scene intersection */
-static vec3_t ray_color(const ray_t r, const hittable_list_t *world) {
+/* Calculate color based on ray-scene intersection with recursion */
+static vec3_t ray_color(const ray_t r, const hittable_list_t *world, int depth) {
     hit_record_t rec = {0};
-    if (hittable_list_hit(world, r, 0.0, 1e308, &rec)) {
-        vec3_t color = vec3(rec.normal.e[0] + 1.0, rec.normal.e[1] + 1.0,
-                           rec.normal.e[2] + 1.0);
-        return vec3_mul(color, 0.5);
+
+    if (depth <= 0) {
+        return vec3(0.0, 0.0, 0.0);
+    }
+
+    if (hittable_list_hit(world, r, 0.001, INFINITY, &rec)) {
+        ray_t scattered = {0};
+        vec3_t attenuation = {0};
+
+        if (rec.material && rec.material->scatter) {
+            if (rec.material->scatter(rec.material->data, r, &rec, &attenuation,
+                                      &scattered)) {
+                vec3_t color = ray_color(scattered, world, depth - 1);
+                return vec3(attenuation.e[0] * color.e[0],
+                           attenuation.e[1] * color.e[1],
+                           attenuation.e[2] * color.e[2]);
+            }
+        }
+        return vec3(0.0, 0.0, 0.0);
     }
 
     vec3_t unit_direction = vec3_normalize(r.direction);
@@ -65,10 +83,31 @@ int main(void) {
         return 1;
     }
 
-    /* Add a sphere to the world */
-    sphere_t *sphere = sphere_create(vec3(0.0, 0.0, -1.0), 0.5, NULL);
-    if (sphere) {
-        hittable_list_add(world, sphere_to_hittable(sphere));
+    /* Create materials */
+    material_t mat_ground = lambertian_create(vec3(0.5, 0.5, 0.5));
+    material_t mat_center = lambertian_create(vec3(0.7, 0.3, 0.3));
+    material_t mat_left = dielectric_create(1.5);
+    material_t mat_right = metal_create(vec3(0.8, 0.6, 0.2), 0.0);
+
+    /* Create spheres with materials */
+    sphere_t *ground = sphere_create(vec3(0.0, -100.5, -1.0), 100.0, &mat_ground);
+    if (ground) {
+        hittable_list_add(world, sphere_to_hittable(ground));
+    }
+
+    sphere_t *center = sphere_create(vec3(0.0, 0.0, -1.0), 0.5, &mat_center);
+    if (center) {
+        hittable_list_add(world, sphere_to_hittable(center));
+    }
+
+    sphere_t *left = sphere_create(vec3(-1.0, 0.0, -1.0), 0.5, &mat_left);
+    if (left) {
+        hittable_list_add(world, sphere_to_hittable(left));
+    }
+
+    sphere_t *right = sphere_create(vec3(1.0, 0.0, -1.0), 0.5, &mat_right);
+    if (right) {
+        hittable_list_add(world, sphere_to_hittable(right));
     }
 
     /* Camera setup */
@@ -83,9 +122,9 @@ int main(void) {
     );
 
     /* Open output file */
-    FILE *out = fopen("output/antialiased.ppm", "w");
+    FILE *out = fopen("output/materials.ppm", "w");
     if (!out) {
-        fprintf(stderr, "Error: could not open output/antialiased.ppm\n");
+        fprintf(stderr, "Error: could not open output/materials.ppm\n");
         hittable_list_destroy(world);
         return 1;
     }
@@ -106,7 +145,7 @@ int main(void) {
                 double u = (i + random_double()) / (IMAGE_WIDTH - 1);
                 double v = (j + random_double()) / (IMAGE_HEIGHT - 1);
                 ray_t r = camera_get_ray(&camera, u, v);
-                pixel_color = vec3_add(pixel_color, ray_color(r, world));
+                pixel_color = vec3_add(pixel_color, ray_color(r, world, MAX_DEPTH));
             }
 
             write_color(out, pixel_color, SAMPLES_PER_PIXEL);
@@ -116,5 +155,12 @@ int main(void) {
     fprintf(stderr, "\nDone.\n");
     fclose(out);
     hittable_list_destroy(world);
+
+    /* Clean up materials */
+    if (mat_ground.destroy) mat_ground.destroy(mat_ground.data);
+    if (mat_center.destroy) mat_center.destroy(mat_center.data);
+    if (mat_left.destroy) mat_left.destroy(mat_left.data);
+    if (mat_right.destroy) mat_right.destroy(mat_right.data);
+
     return 0;
 }

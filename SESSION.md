@@ -84,3 +84,32 @@ Create a camera.h module with look-at camera setup and FOV control. Implement ca
   - Gamma correction (sqrt) for proper display
 - Verified output: 256x256 antialiased image with smooth edges
 - Defocus blur support ready for later scenes
+
+---
+
+[2026-02-18 12:18:45] - Step 5: Materials (Scatter System)
+
+**Prompt:**
+Implement three material types: Lambertian (diffuse), Metal (reflective with fuzziness), and Dielectric (glass with Snell's law and Schlick's approximation). Update ray_color() to recursively trace rays with MAX_DEPTH=50. Create scene with ground sphere and three spheres with different materials. Update main.c to call ray_color() with depth parameter.
+
+**Model:** Claude 3.5 Haiku (Continuation)
+
+**Status:** ✓ Complete
+- Created material.c with three material implementations:
+  - **Lambertian**: Diffuse scattering with random unit vector (Lambertian reflection)
+  - **Metal**: Specular reflection with fuzz parameter for surface roughness
+  - **Dielectric**: Glass with refraction using Snell's law and Schlick's fresnel approximation
+- Implemented recursive ray_color() function:
+  - Depth recursion with MAX_DEPTH=50 to limit bounces
+  - Material scatter callback for ray continuation
+  - Attenuation (color) accumulation through bounces
+  - Ray offset (0.001) to avoid shadow acne
+- Updated material.h with creation functions and corrected struct typedef
+- Created scene in main.c with:
+  - Ground sphere (large plane simulation, radius 100.5)
+  - Center diffuse sphere (red)
+  - Left glass sphere (dielectric, index=1.5)
+  - Right shiny metal sphere (low fuzz)
+- Added utils.h with clamp() utility
+- Material cleanup in main() after rendering
+- Verified output: 256x256 with realistic material interactions

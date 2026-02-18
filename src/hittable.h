@@ -8,7 +8,7 @@
 typedef struct material material_t;
 
 /* Record of a ray-object intersection */
-typedef struct {
+typedef struct hit_record {
     vec3_t point;
     vec3_t normal;
     double t;

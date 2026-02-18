@@ -6,7 +6,7 @@ OUTDIR = output
 
 # Source files
 COMMON_OBJS = $(SRCDIR)/vec3.o $(SRCDIR)/hittable.o $(SRCDIR)/sphere.o \
-              $(SRCDIR)/camera.o
+              $(SRCDIR)/camera.o $(SRCDIR)/material.o
 MAIN_OBJS = $(COMMON_OBJS) $(SRCDIR)/main.o
 
 .PHONY: all clean test run
