@@ -1,55 +1,64 @@
-# Prerequisites
-*.d
-
-# Object files
+# object files
 *.o
 *.ko
 *.obj
 *.elf
 
-# Linker output
+# precompiled headers
+*.gch
+*.pch
+
+# linker output
 *.ilk
 *.map
 *.exp
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
+# libraries
 *.lib
 *.a
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs)
+# shared objects
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# executables (project-specific)
+vibe_tracing
+test_vec3
+test_ray
+test_sphere
+test_material
+test_camera
 
-# Debug files
+# debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# ray tracer generated output
+output/*.ppm
+output/*.ppm.bak
+output/*_test.png
+output/before.png
+output/after.png
 
-# debug information files
-*.dwo
+# temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+tags
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# build directories
+build/
+dist/
+
