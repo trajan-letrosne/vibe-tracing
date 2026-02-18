@@ -14,11 +14,11 @@ Dans ce **projet éducatif**, nous avons été mis au défi de créer un **progr
 
 Le ray tracing est un classique de l'infographie qui produit des visuels de haute qualité, ce qui en fait un test idéal du vibe coding. Ce projet montre comment collaborer efficacement avec les agents de codage IA pour construire une application graphique 3D ambitieuse sous des contraintes de temps strictes. 
 
-C'était le défi du **jour 3** de MiniVibes - un projet éducatif créé par notre école. *Pour plus de détails, voir le brief complet du projet (FR & EN) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
+C'était le défi du **jour 3** de MiniVibes - un projet éducatif créé par notre école de formation. *Pour plus de détails, voir le brief complet du projet (FR & EN) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
 
 ## Qu'est-ce que le vibe coding? Pourquoi?
 
-Le « vibe coding » fait référence à la nouvelle compétence qui consiste à travailler efficacement avec des agents de codage IA. À mesure que les agents IA deviennent plus performants, savoir comment les demander, les guider et collaborer avec eux devient sans doute une compétence importante, au même titre que les compétences traditionnelles en codage.
+Le « vibe coding » fait référence à la nouvelle compétence qui consiste à travailler efficacement avec des agents de codage IA. À mesure que les agents IA deviennent plus performants, savoir comment les prompter, les guider et collaborer avec eux devient sans doute une compétence importante, au même titre que les compétences traditionnelles en codage.
 
 ## Contraintes du projet
 
@@ -155,7 +155,7 @@ In this **educational project** we were challenged to create a **complete ray tr
 
 Ray tracing is a classic in computer graphics that produces high-quality visual output, making it an ideal test of vibe coding. This project showcases how to collaborate effectively with AI coding agents to build an ambitious 3D graphics application under strict time constraints. 
 
-It was the **day 3** challenge of MiniVibes - an educational project set by our school. *For more details, see complete project brief (French & English) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
+It was the **day 3** challenge of MiniVibes - an educational project set by our training school. *For more details, see complete project brief (French & English) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
 
 ## What is vibe coding? Why? 
 
