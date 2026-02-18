@@ -58,3 +58,29 @@ Implement a hittable.h interface using a struct with a function pointer for hit.
 - Created material.h with scatter function signature (needed for compilation)
 - Updated main.c to render sphere with normal visualization (RGB encoded)
 - Verified output: 256x256 PPM with centered sphere silhouette
+
+---
+
+[2026-02-18 12:15:42] - Step 4: Antialiasing & Camera Module
+
+**Prompt:**
+Create a camera.h module with look-at camera setup and FOV control. Implement camera_create() with viewport, aspect ratio, aperture (for depth-of-field), and focus distance. Create camera_get_ray() for ray generation. Implement MSAA (multi-sampling antialiasing) with 100 samples per pixel. Update main.c to use the camera and accumulate/average colors. Add gamma correction (sqrt) to write_color().
+
+**Model:** Claude 3.5 Haiku (Continuation)
+
+**Status:** ✓ Complete
+- Created camera.h with camera_t struct storing:
+  - Viewport dimensions based on FOV (vfov in degrees)
+  - Orientation vectors (u, v, w) from look-at
+  - Lens radius for depth-of-field support
+- Implemented camera.c with:
+  - Proper viewport calculation from aspect ratio
+  - Look-at transformation (right-hand coordinate frame)
+  - random_in_unit_disk() for lens sampling
+  - camera_get_ray() with optional defocus blur
+- Implemented MSAA in main.c:
+  - 100 samples per pixel with random jitter
+  - Color accumulation across samples
+  - Gamma correction (sqrt) for proper display
+- Verified output: 256x256 antialiased image with smooth edges
+- Defocus blur support ready for later scenes
