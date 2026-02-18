@@ -32,3 +32,29 @@ Create a ray.h struct and a main.c that outputs a 256x256 PPM image. The image s
 - Updated Makefile with vibe_tracing target and run target
 - Verified output: 256x256 valid PPM with smooth white-to-blue gradient
 - No compiler warnings
+
+---
+
+[2026-02-18 12:12:30] - Step 3: Geometry & Intersections
+
+**Prompt:**
+Implement a hittable.h interface using a struct with a function pointer for hit. Create hit_record_t to store intersection data. Implement a hittable_list_t to manage multiple objects. Create sphere.h and sphere.c with ray-sphere intersection using the quadratic formula. Update main.c to render a single sphere at (0, 0, -1) with radius 0.5, visualizing normals as color.
+
+**Model:** Claude 3.5 Haiku (Continuation)
+
+**Status:** ✓ Complete
+- Created hittable.h with:
+  - hit_record_t struct storing point, normal, t, front_face, material
+  - set_face_normal() utility for proper normal orientation
+  - hittable_t generic interface with function pointers
+  - hittable_list_t for managing multiple objects
+- Implemented hittable.c with:
+  - List creation, add, and hit detection
+  - Closest intersection tracking (t_min/t_max culling)
+  - Memory cleanup with destroy callbacks
+- Created sphere.h/c with:
+  - Ray-sphere intersection using quadratic formula
+  - Proper normal calculation and front-face detection
+- Created material.h with scatter function signature (needed for compilation)
+- Updated main.c to render sphere with normal visualization (RGB encoded)
+- Verified output: 256x256 PPM with centered sphere silhouette
