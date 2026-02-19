@@ -12,9 +12,9 @@
 
 Dans ce **projet éducatif**, nous avons été mis au défi de créer un **programme complet de ray tracing en C** en une seule journée grâce à la collaboration avec des agents IA (vibe coding).
 
-Le ray tracing est un classique de l'infographie qui produit des visuels de haute qualité, ce qui en fait un test idéal du vibe coding. Ce projet montre comment collaborer efficacement avec les agents de codage IA pour construire une application graphique 3D ambitieuse sous des contraintes de temps strictes. 
+Le ray tracing est un classique de l'infographie qui produit des visuels de haute qualité, ce qui en fait un test idéal pour du vibe coding. Ce projet montre comment collaborer efficacement avec les agents de codage IA pour construire une application graphique 3D ambitieuse avec des contraintes de temps strictes. 
 
-C'était le défi du **jour 3** de MiniVibes - un projet éducatif créé par notre école de formation. *Pour plus de détails, voir le brief complet du projet (FR & EN) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
+C'était le défi du **jour 3** de MiniVibes - un projet éducatif créé par notre école d'informatique. *Pour plus de détails, voir le brief complet du projet (FR & EN) [MiniVibesConsigne.md](./docs/MiniVibesConsigne.md)*
 
 ## Qu'est-ce que le vibe coding? Pourquoi?
 
@@ -22,7 +22,7 @@ Le « vibe coding » fait référence à la nouvelle compétence qui consiste à
 
 ## Contraintes du projet
 
-Le défi MiniVibes fonctionnait sous des contraintes strictes:
+Le défi MiniVibes fonctionne avec des contraintes strictes:
 - **temps limité**: un jour par projet
 - **jetons limités**: utilisation de modèles "mini" (multiplicateur 0,33x) la plupart du temps
 - **budget limité**: une demande premium par projet/jour
@@ -53,7 +53,7 @@ Le rendu final montre:
 - **sphère mate** (arrière-gauche) avec ombrage diffus Lambertian
 - **~480 objets aléatoires**: mélange de matériaux diffus, métalliques et vitrés
 - **profondeur de champ**: premier plan et arrière-plan flous, plan médian net
-- **illumination globale**: saignement de couleur provenant des objets environnants sur le sol
+- **illumination globale**: débordement des couleurs provenant des objets environnants sur le sol
 
 Réalisé avec 8 prompts au total [*voir `SESSION.md`*](./SESSION.md)
 
